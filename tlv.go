@@ -175,10 +175,10 @@ func (recs *TLVList) Remove(tag int) int {
 	for {
 		var removed int
 		for e := recs.records.Front(); e != nil; e = e.Next() {
-		        if e.Value.(*record).Tag() == tag {
+			if e.Value.(*record).Tag() == tag {
 				recs.records.Remove(e)
 				removed++
-                                break
+				break
 			}
 		}
 		if removed == 0 {
@@ -200,7 +200,7 @@ func (recs *TLVList) RemoveRecord(rec TLV) int {
 			if Equals(e.Value.(*record), rec) {
 				recs.records.Remove(e)
 				removed++
-                                break
+				break
 			}
 		}
 		if removed == 0 {

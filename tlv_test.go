@@ -146,15 +146,15 @@ func TestTLVListRemoveRecords(t *testing.T) {
 		FailWithError(t, "TestTLVRemoveRecords", err)
 	}
 
-        if tlvs := tlvl.GetAll(TagTest1); len(tlvs) != 2 {
-                fmt.Printf("%d TagTest1 records, expected %d\n",
-                        len(tlvs), 2)
-                FailWithError(t, "TestTLVListRemoveRecords",
-                        fmt.Errorf("records not added"))
-        }
+	if tlvs := tlvl.GetAll(TagTest1); len(tlvs) != 2 {
+		fmt.Printf("%d TagTest1 records, expected %d\n",
+			len(tlvs), 2)
+		FailWithError(t, "TestTLVListRemoveRecords",
+			fmt.Errorf("records not added"))
+	}
 
 	if n := tlvl.Remove(TagTest1); n != 2 {
-                fmt.Printf("only %d records removed\n", n)
+		fmt.Printf("only %d records removed\n", n)
 		FailWithError(t, "TestTLVListRemoveRecords",
 			fmt.Errorf("record not removed"))
 	}
