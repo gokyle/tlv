@@ -100,7 +100,7 @@ func readRecord(r io.Reader) (rec TLV, err error) {
 	if err != nil {
 		return
 	} else if l != tlv.Length() {
-		return tlv, ErrTLVWrite
+		return tlv, ErrTLVRead
 	}
 	return tlv, nil
 }
