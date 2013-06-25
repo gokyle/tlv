@@ -83,13 +83,13 @@ func readRecord(r io.Reader) (rec TLV, err error) {
 	tlv := new(record)
 
 	var n int32
-	err = binary.Read(r, binary.LittleEndian, &n)
+	err = binary.Read(r, binary.BigEndian, &n)
 	if err != nil {
 		return
 	}
 	tlv.tag = int(n)
 
-	err = binary.Read(r, binary.LittleEndian, &n)
+	err = binary.Read(r, binary.BigEndian, &n)
 	if err != nil {
 		return
 	}
@@ -107,13 +107,13 @@ func readRecord(r io.Reader) (rec TLV, err error) {
 
 func writeRecord(tlv TLV, w io.Writer) (err error) {
 	tmp := int32(tlv.Tag())
-	err = binary.Write(w, binary.LittleEndian, tmp)
+	err = binary.Write(w, binary.BigEndian, tmp)
 	if err != nil {
 		return
 	}
 
 	tmp = int32(tlv.Length())
-	err = binary.Write(w, binary.LittleEndian, tmp)
+	err = binary.Write(w, binary.BigEndian, tmp)
 	if err != nil {
 		return
 	}
